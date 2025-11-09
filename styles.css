@@ -1,0 +1,65 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+    font-size: 2rem;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.text {
+    padding: 30px;
+    margin: 30px;
+}
+
+.img{
+    border-radius: 20px;
+    width: 90%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around; 
+    align-items: stretch;          
+    flex-wrap: wrap;               
+    height: 100vh;
+}
+
+.Category{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+    padding: 2%;
+    color: white;
+    transition: .3s;
+    animation-delay: 0.1s;
+}
+.Category:hover{
+    flex: 2;
+}
+
+#Youtube{
+    background: radial-gradient(circle,rgba(219, 116, 116, 1) 0%, rgba(184, 64, 64, 1) 48%, rgba(166, 50, 50, 1) 100%);
+}
+
+#Twitch{
+    background: radial-gradient(circle,rgba(200, 116, 219, 1) 0%, rgba(140, 64, 184, 1) 48%, rgba(129, 50, 166, 1) 100%);
+}
+
+#Japon{
+    background: radial-gradient(circle, rgba(219, 178, 116, 1) 0%, rgba(184, 162, 64, 1) 48%, rgba(166, 135, 50, 1) 100%);
+}
+
+#Noruega{
+    background: radial-gradient(circle, rgba(116, 162, 219, 1) 0%, rgba(64, 116, 184, 1) 48%, rgba(50, 96, 166, 1) 100%);
+}
