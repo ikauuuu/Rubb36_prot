@@ -46,6 +46,8 @@ body {
 }
 .Category:hover{
     flex: 2;
+    font-size: 3.5rem;
+    text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
 }
 
 #Youtube{
