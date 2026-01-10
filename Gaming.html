@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Gaming</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_653aec73d1934a42b44661b80077218e/static/light/3.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="Gaming">
+    <!-- Page Title -->
+    <h1 class="page-title">Gaming</h1>
+
+    <!-- Main Content Container -->
+    <div class="container" style="justify-content:center;align-items:center;flex-direction:column;">
+        <!-- Main Image -->
+        <img src="https://i.ytimg.com/vi/Rucy5hjZ--Y/maxresdefault.jpg" alt="RubiusGM" class="img" style="max-width:400px; margin-top: 80px;">
+    </div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="volver-btn">← Volver</a>
+
+    <!-- Fullscreen restore if needed -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        // Restore fullscreen if coming from main page
+        if (localStorage.getItem('rubius_fullscreen') === '1') {
+            var el = document.documentElement,
+                rfs = el.requestFullscreen
+                    || el.webkitRequestFullScreen
+                    || el.mozRequestFullScreen
+                    || el.msRequestFullScreen;
+            if (rfs && !document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+                rfs.call(el);
+            }
+        }
+    });
+    </script>
+</body>
+</html>

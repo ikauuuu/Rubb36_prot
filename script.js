@@ -1,37 +1,84 @@
-const containers = document.querySelectorAll('.img_container');
-const category = document.querySelectorAll('.Category');
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
 
-category.forEach(category => {
-    const image = category.querySelector('.img');
-    category.addEventListener('mousemove', (e) => {
-        const rect = category.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+const preapp = $('.preapp');
+const container = $('.container');
+const Allcategory = $$('.Category');
+const selected = $('.selected');
+const selCategories = $$('.selCategory');
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+const categoryToUrl = {
+    'Verse': 'Rubiusverse.html',
+    'Gaming': 'Gaming.html',
+    'Japon': 'Japon2009.html'
+};
 
-        const maxTilt = 25;
-        const maxTranslateZ = 50;
+let lastCategoryId = null;
 
-        const rotateX = ((centerY - y) / centerY) * maxTilt;
-        const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-        const TranslateZ = maxTranslateZ;
 
-        image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(-10px)`;
-        //image.style.width = '90%'
-        image.style.boxShadow = '50px 50px 5px rgba(0, 0, 0, 0)';
-    });
 
-    category.addEventListener('mouseleave', () => {
-        image.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
-        //image.style.width = '70%'
-        image.style.boxshadow = '50px 50px 5px rgba(0, 0, 0, 0)';
+
+// Show both preapp and container at start
+preapp.style.display = "flex";
+container.style.display = "flex";
+
+// Hide preapp only when F11 is pressed
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'F11') {
+        preapp.style.opacity = "0";
+        setTimeout(() => {
+            preapp.style.display = "none";
+        }, 300);
+        localStorage.setItem('rubius_fullscreen', '1');
+    }
+});
+
+
+Allcategory.forEach(div => {
+    div.addEventListener("click", async function(e) {
+        e.stopPropagation();
+        lastCategoryId = div.id;
+        container.style.display = "none";
+        // Solicitar fullscreen antes de navegar
+        try {
+            var el = document.documentElement,
+                rfs = el.requestFullscreen
+                    || el.webkitRequestFullScreen
+                    || el.mozRequestFullScreen
+                    || el.msRequestFullscreen;
+            if (rfs && !document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+                await rfs.call(el);
+            }
+        } catch (err) {}
+        if (lastCategoryId && categoryToUrl[lastCategoryId]) {
+            window.location.href = categoryToUrl[lastCategoryId];
+        }
     });
 });
 
-//category.addEventListener('mouseleave', () => {
-    //image.style.width = '90%'
-//})
+selCategories.forEach(selDiv => {
+    selDiv.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (lastCategoryId && categoryToUrl[lastCategoryId]) {
+            window.location.href = categoryToUrl[lastCategoryId];
+        }
+    });
+});
+
+// --- Mantener fullscreen en subpáginas ---
+window.addEventListener('DOMContentLoaded', function() {
+    // Si venimos de fullscreen, intentar restaurar
+    if (localStorage.getItem('rubius_fullscreen') === '1') {
+        var el = document.documentElement,
+            rfs = el.requestFullscreen
+                || el.webkitRequestFullScreen
+                || el.mozRequestFullScreen
+                || el.msRequestFullscreen;
+        if (rfs && !document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+            rfs.call(el);
+        }
+    }
+});
+
