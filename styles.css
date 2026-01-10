@@ -18,11 +18,11 @@ html {
     text-decoration: none;
     background: rgba(0,0,0,0.18);
     border: none;
-    border-radius: 20px;
+    border-radius: 100px;
     padding: 12px 32px 12px 24px;
     z-index: 10;
     box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
-    transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: all 0.3s ease;
     font-weight: 600;
     letter-spacing: 0.04em;
     display: inline-block;
@@ -44,10 +44,9 @@ html {
     pointer-events: none;
 }
 .volver-btn:hover {
-    color: #ffd700;
     background: rgba(0,0,0,0.7);
-    transform: translateY(-6px) scale(1.04);
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
+    font-size: 2rem;
 }
 .volver-btn:hover::after {
     opacity: 1;
@@ -113,22 +112,7 @@ body {
     height: 100%;
 }
 
-.preapp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: rgba(8, 12, 6, 0.7); /* Translucent background */
-    margin: 0;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 100;
-    font-size: 2.2rem;
-    transition: opacity 0.3s;
-}
+
 
 .container {
     display: flex;
